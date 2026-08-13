@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+
+body {
+  width: 100%;
+  height: 100dvh;
+}
+
+@layer base {
+  li {
+    @apply flex items-center gap-2;
+  }
+}
+
+@layer components {
+  .lines {
+    @apply text-gray-200;
+  }
+}

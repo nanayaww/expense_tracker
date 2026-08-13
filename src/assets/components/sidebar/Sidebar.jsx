@@ -1,0 +1,52 @@
+import { MdOutlineDashboard } from "react-icons/md";
+import Button from "../Button";
+import { RiFileList3Line } from "react-icons/ri";
+import { LuShapes } from "react-icons/lu";
+import { TbReportAnalytics } from "react-icons/tb";
+import { CiSettings } from "react-icons/ci";
+import { BiSupport } from "react-icons/bi";
+import List from "./List";
+import { IoIosAdd } from "react-icons/io";
+
+function Sidebar() {
+  return (
+    <aside className=" md:col-span-[1/2] flex flex-col col-span-1 h-dvh border-r border-r-gray-200 ">
+      <div className=" h-[10%] flex justify-center items-center text-lg ">
+        <h1>Expense tracker</h1>
+      </div>
+      <hr className=" lines h-px" />
+      <div className=" flex flex-col flex-1 py-8">
+        <div className="h-[10%] px-3">
+          <Button
+            child={<IoIosAdd size={"2rem"} />}
+            value="Add expense"
+            style={" bg-blue-600 p-3 rounded-sm text-white flex items-center "}
+          />
+        </div>
+        <nav className=" flex-1 flex flex-col justify-between h-100 pt-5 ">
+          <ul className=" flex flex-col gap-4 px-3 ">
+            <List child={<MdOutlineDashboard />} value="Dashboard" />
+            <List child={<RiFileList3Line />} value="Expense List" />
+            <List child={<LuShapes />} value="Categories" />
+            <List child={<TbReportAnalytics />} value="Reports" />
+          </ul>
+          <div>
+            <hr className=" lines" />
+            <ul className=" flex flex-col gap-4 pt-2 px-3 ">
+              <li>
+                {" "}
+                <CiSettings /> Settings
+              </li>
+              <li>
+                {" "}
+                <BiSupport /> Support
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
