@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import AddExpense from "../main/expenseList/AddExpense";
 import { useState } from "react";
 
-function Sidebar() {
+function Sidebar({ expense, setExpense }) {
   const [showAddExpense, setshowAddExpense] = useState(false);
 
   function handleShowExpense() {
@@ -26,7 +26,12 @@ function Sidebar() {
       <hr className=" lines h-px" />
       <div className=" flex flex-col flex-1 py-8">
         <div className="h-[10%] px-3">
-          <AddExpense showAddExpense={showAddExpense} />
+          <AddExpense
+            handleClick={handleShowExpense}
+            showAddExpense={showAddExpense}
+            expense={expense}
+            setExpense={setExpense}
+          />
           <Button
             handleClick={handleShowExpense}
             child={<IoIosAdd size={"2rem"} />}

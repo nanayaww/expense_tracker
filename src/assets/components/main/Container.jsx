@@ -1,11 +1,11 @@
 import Content from "./Content";
 import Navbar from "./Navbar";
 
-function Container() {
+function Container({ expense }) {
   return (
     <div className=" col-span-3 flex flex-col bg-blue-50 ">
       <Navbar />
-      <Content />
+      <Content expense={expense} />
     </div>
   );
 }

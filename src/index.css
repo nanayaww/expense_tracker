@@ -32,4 +32,8 @@ body {
   .expenseButtons {
     @apply flex items-center gap-1 p-2 text-sm rounded-sm;
   }
+
+  .formInput {
+    @apply w-full border border-gray-200 px-2 py-2 rounded-sm outline-transparent focus:outline-gray-500;
+  }
 }

@@ -38,28 +38,25 @@ function Expense() {
           </tr>
           <tr>
             <td>Aug 13th, 2026</td>
-            <td></td>
+            <td>okay</td>
             <td>Travel</td>
             <td>Ghs2,500.00</td>
           </tr>
           <tr>
-            {" "}
             <td>Aug 13th, 2026</td>
-            <td></td>
+            <td>okay</td>
             <td>Travel</td>
             <td>Ghs2,500.00</td>
           </tr>
           <tr>
-            {" "}
             <td>Aug 13th, 2026</td>
-            <td></td>
+            <td>okay</td>
             <td>Travel</td>
             <td>Ghs2,500.00</td>
           </tr>
           <tr>
-            {" "}
-            <td></td>
-            <td></td>
+            <td>okay</td>
+            <td>okay</td>
             <td>Total for the period</td>
             <td>Ghs7,500.00</td>
           </tr>
