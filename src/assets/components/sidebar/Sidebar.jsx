@@ -7,8 +7,17 @@ import { CiSettings } from "react-icons/ci";
 import { BiSupport } from "react-icons/bi";
 import List from "./List";
 import { IoIosAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
+import AddExpense from "../main/expenseList/AddExpense";
+import { useState } from "react";
 
 function Sidebar() {
+  const [showAddExpense, setshowAddExpense] = useState(false);
+
+  function handleShowExpense() {
+    showAddExpense ? setshowAddExpense(false) : setshowAddExpense(true);
+  }
+
   return (
     <aside className=" md:col-span-[1/2] flex flex-col col-span-1 h-dvh border-r border-r-gray-200 ">
       <div className=" h-[10%] flex justify-center items-center text-lg ">
@@ -17,7 +26,9 @@ function Sidebar() {
       <hr className=" lines h-px" />
       <div className=" flex flex-col flex-1 py-8">
         <div className="h-[10%] px-3">
+          <AddExpense showAddExpense={showAddExpense} />
           <Button
+            handleClick={handleShowExpense}
             child={<IoIosAdd size={"2rem"} />}
             value="Add expense"
             style={" bg-blue-600 p-3 rounded-sm text-white flex items-center "}
@@ -25,10 +36,18 @@ function Sidebar() {
         </div>
         <nav className=" flex-1 flex flex-col justify-between h-100 pt-5 ">
           <ul className=" flex flex-col gap-4 px-3 ">
-            <List child={<MdOutlineDashboard />} value="Dashboard" />
-            <List child={<RiFileList3Line />} value="Expense List" />
-            <List child={<LuShapes />} value="Categories" />
-            <List child={<TbReportAnalytics />} value="Reports" />
+            <Link to={"/"}>
+              <List child={<MdOutlineDashboard />} value="Dashboard" />
+            </Link>
+            <Link to={"/expenselist"}>
+              <List child={<RiFileList3Line />} value="Expense List" />
+            </Link>
+            <Link to={"categories"}>
+              <List child={<LuShapes />} value="Categories" />
+            </Link>
+            <Link to={"reports"}>
+              <List child={<TbReportAnalytics />} value="Reports" />
+            </Link>
           </ul>
           <div>
             <hr className=" lines" />
