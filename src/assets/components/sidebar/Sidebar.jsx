@@ -34,7 +34,7 @@ function Sidebar({ expense, setExpense }) {
           />
           <Button
             handleClick={handleShowExpense}
-            child={<IoIosAdd size={"2rem"} />}
+            child={<IoIosAdd size={"1em"} />}
             value="Add expense"
             style={" bg-blue-600 p-3 rounded-sm text-white flex items-center "}
           />

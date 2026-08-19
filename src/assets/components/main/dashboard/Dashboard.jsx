@@ -1,6 +1,6 @@
-import Button from "../Button";
+import Button from "../../Button";
 import Card from "./Card";
-import Recent_Transactions from "./Recent_Transactions";
+import Recent_Transactions from "../dashboard/Recent_Transactions";
 
 export default function Dashboard() {
   return (

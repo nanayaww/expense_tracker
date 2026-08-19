@@ -55,7 +55,7 @@ function AddExpense({ showAddExpense, handleClick, setExpense }) {
               <label htmlFor="currency" className="flex flex-col gap-1">
                 Currency
                 <select className="formInput" name="currency" id="currency">
-                  <option value="usd">USD</option>
+                  <option value="USD">USD</option>
                 </select>
               </label>
             </div>

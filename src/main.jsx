@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./assets/components/main/Dashboard.jsx";
 import ExpenseList from "./assets/components/main/expenseList/ExpenseList.jsx";
 import Categories from "./assets/components/main/categories/Categories.jsx";
+import Dashboard from "./assets/components/main/dashboard/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
