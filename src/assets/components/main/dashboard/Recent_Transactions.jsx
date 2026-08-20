@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 function Recent_Transactions() {
   const { expense } = useOutletContext();
@@ -16,7 +16,9 @@ function Recent_Transactions() {
     <div className="mt-10 bg-white">
       <span className=" flex items-center justify-between p-3 bg-blue-50 border border-gray-200">
         <span className=" text-xl">Recent Transactions</span>
-        <button className=" text-xs text-blue-800"> VIEW ALL</button>
+        <Link to={"/expenselist"}>
+          <button className=" text-xs text-blue-800"> VIEW ALL</button>
+        </Link>
       </span>
       <table className="w-full">
         <thead>
