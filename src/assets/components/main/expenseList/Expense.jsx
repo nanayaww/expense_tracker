@@ -1,7 +1,22 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ExpenseItem from "./ExpenseItem";
 
-function Expense({ expense }) {
+function Expense({ expense, setExpense }) {
+  function deleteExpenseItem(id) {
+    console.log({ clickedId: id, storedIds: expense.map((item) => item.id) });
+
+    setExpense((prevItems) => prevItems.filter((item) => item.id !== id));
+  }
+
+  function renderExpenseItem(item) {
+    return (
+      <ExpenseItem
+        key={item.id}
+        expenseList={item}
+        handleClick={deleteExpenseItem}
+      />
+    );
+  }
   return (
     <div>
       <div className="flex items-center justify-between mt-5 bg-white border border-gray-200 p-3">
@@ -37,6 +52,7 @@ function Expense({ expense }) {
               <th>Description</th>
               <th>Category</th>
               <th>Amount</th>
+              <th>Actions</th>
             </tr>
           </thead>
 
@@ -47,7 +63,7 @@ function Expense({ expense }) {
               </tr>
             ) : (
               expense.map((item) => {
-                return <ExpenseItem key={item.id} expenseList={item} />;
+                return renderExpenseItem(item);
               })
             )}
           </tbody>

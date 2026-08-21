@@ -5,15 +5,19 @@ import Recent_Transactions from "../dashboard/Recent_Transactions";
 export default function Dashboard() {
   return (
     <div className=" w-full">
-      <div className=" h-15 flex items-center justify-between ">
-        <h2 className=" flex flex-col">
-          <span className="text-4xl font-bold">Dashboard</span>
-          <span>Overview of institutional expenditures.</span>
-        </h2>
-        <Button
-          value="Export report"
-          style=" border border-gray-300 p-2 rounded-sm"
-        />
+      <div className=" grid grid-cols-2 w-full items-center mb-5 ">
+        <div className=" flex flex-col">
+          <h2 className="text-xl font-bold">Dashboard</h2>
+          <span className="text-sm">
+            Overview of institutional expenditures.
+          </span>
+        </div>
+        <div className=" justify-self-end">
+          <Button
+            value="Export report"
+            style=" expenseButtons border border-gray-200 bg-white"
+          />
+        </div>
       </div>
       <div className=" flex gap-5 mt-5 ">
         <Card title="Available capital" value="GHS7000.40" change="1.2%" />

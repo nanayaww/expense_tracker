@@ -3,12 +3,12 @@ import ExpenseHead from "./ExpenseHead";
 import { useOutletContext } from "react-router-dom";
 
 function ExpenseList() {
-  const { expense } = useOutletContext();
+  const { expense, setExpense } = useOutletContext();
 
   return (
     <div className=" w-full">
       <ExpenseHead />
-      <Expense expense={expense} />
+      <Expense expense={expense} setExpense={setExpense} />
     </div>
   );
 }

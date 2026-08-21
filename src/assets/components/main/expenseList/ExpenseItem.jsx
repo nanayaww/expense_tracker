@@ -1,12 +1,22 @@
-function ExpenseItem({ expenseList }) {
+import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
+
+function ExpenseItem({ expenseList, handleClick }) {
   return (
-    <tr key={expenseList.id}>
+    <tr className="hover:bg-blue-200" key={expenseList.id}>
       <td>{expenseList.date}</td>
       <td>{expenseList.merchant}</td>
       <td>{expenseList.category}</td>
       <td>
         {expenseList.currency}
         {expenseList.amount}
+      </td>
+      <td className="flex justify-center p-3 gap-[1ch] ">
+        <span>
+          <MdOutlineModeEditOutline />
+        </span>
+        <span onClick={() => handleClick(expenseList.id)}>
+          <MdDeleteOutline />
+        </span>
       </td>
     </tr>
   );

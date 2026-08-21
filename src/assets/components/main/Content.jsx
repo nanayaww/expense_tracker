@@ -1,11 +1,5 @@
-import { Outlet } from "react-router-dom";
-
-function Content({ expense }) {
-  return (
-    <div className=" flex-2 flex w-full p-8">
-      <Outlet context={{ expense }} />
-    </div>
-  );
+function Content({ children }) {
+  return <div className=" flex-2 flex w-full p-8">{children}</div>;
 }
 
 export default Content;

@@ -10,6 +10,7 @@ function Categories() {
         <CategoryCard title={"Total Spent"} value={"$3000"} />
         <CategoryCard title={"Balance"} value={"$1000"} />
       </div>
+      <div></div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ExpenseList from "./assets/components/main/expenseList/ExpenseList.jsx";
 import Categories from "./assets/components/main/categories/Categories.jsx";
 import Dashboard from "./assets/components/main/dashboard/Dashboard.jsx";
+import Reports from "./assets/components/main/reports/Reports.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <Dashboard /> },
       { path: "expenselist", element: <ExpenseList /> },
       { path: "categories", element: <Categories /> },
+      { path: "reports", element: <Reports /> },
     ],
   },
 ]);

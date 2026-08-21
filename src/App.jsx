@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Container from "./assets/components/main/Container";
 import Sidebar from "./assets/components/sidebar/Sidebar";
 
@@ -8,7 +9,9 @@ function App() {
   return (
     <div className=" grid grid-cols-4 ">
       <Sidebar expense={expense} setExpense={setExpense} />
-      <Container expense={expense} />
+      <Container>
+        <Outlet context={{ expense, setExpense }} />
+      </Container>
     </div>
   );
 }
