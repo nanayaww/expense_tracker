@@ -9,15 +9,14 @@ import List from "./List";
 import { IoIosAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
 import AddExpense from "../main/expenseList/AddExpense";
-import { useState } from "react";
 
-function Sidebar({ expense, setExpense }) {
-  const [showAddExpense, setshowAddExpense] = useState(false);
-
-  function handleShowExpense() {
-    showAddExpense ? setshowAddExpense(false) : setshowAddExpense(true);
-  }
-
+function Sidebar({
+  expense,
+  setExpense,
+  handleShowExpense,
+  showAddExpense,
+  categories,
+}) {
   return (
     <aside className=" md:col-span-[1/2] flex flex-col col-span-1 h-dvh border-r border-r-gray-200 ">
       <div className=" h-[10%] flex justify-center items-center text-lg ">
@@ -31,6 +30,7 @@ function Sidebar({ expense, setExpense }) {
             showAddExpense={showAddExpense}
             expense={expense}
             setExpense={setExpense}
+            categories={categories}
           />
           <Button
             handleClick={handleShowExpense}

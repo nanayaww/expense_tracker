@@ -2,8 +2,10 @@ import { PiExportThin } from "react-icons/pi";
 import Button from "../../Button";
 import { IoIosAdd } from "react-icons/io";
 import { CiFilter } from "react-icons/ci";
+import { useOutletContext } from "react-router-dom";
 
 function ExpenseHead() {
+  const { handleShowExpense } = useOutletContext();
   return (
     <div className=" h-15 flex items-center justify-between ">
       <h2 className=" flex flex-col">
@@ -15,6 +17,7 @@ function ExpenseHead() {
       <div className=" flex gap-2">
         <Button
           child={<IoIosAdd />}
+          handleClick={handleShowExpense}
           value="Add Expense"
           style="expenseButtons bg-blue-600 text-white "
         />

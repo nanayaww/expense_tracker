@@ -5,12 +5,24 @@ import Sidebar from "./assets/components/sidebar/Sidebar";
 
 function App() {
   const [expense, setExpense] = useState([]);
+  const [showAddExpense, setshowAddExpense] = useState(false);
+  const [categories, setCategories] = useState(["Travel"]);
+
+  function handleShowExpense() {
+    showAddExpense ? setshowAddExpense(false) : setshowAddExpense(true);
+  }
 
   return (
     <div className=" grid grid-cols-4 ">
-      <Sidebar expense={expense} setExpense={setExpense} />
+      <Sidebar
+        expense={expense}
+        setExpense={setExpense}
+        handleShowExpense={handleShowExpense}
+        showAddExpense={showAddExpense}
+        categories={categories}
+      />
       <Container>
-        <Outlet context={{ expense, setExpense }} />
+        <Outlet context={{ expense, setExpense, handleShowExpense, setCategories }} />
       </Container>
     </div>
   );

@@ -1,6 +1,6 @@
 import Button from "../../Button";
 
-function AddExpense({ showAddExpense, handleClick, setExpense }) {
+function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -64,7 +64,13 @@ function AddExpense({ showAddExpense, handleClick, setExpense }) {
               <label htmlFor="category" className="flex flex-col gap-1">
                 Category
                 <select className="formInput" name="category" id="category">
-                  <option value="Travel">Travel</option>
+                  {categories.map((item, index) => {
+                    return (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })}
                 </select>
               </label>
 

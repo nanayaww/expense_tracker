@@ -7,7 +7,7 @@ function Reports() {
   return (
     <div>
       <ReportsHead />
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid sm:grid-cols-3 gap-5">
         <ReportsCard
           title={"Total Income"}
           child={<BsGraphUpArrow color="green" />}
