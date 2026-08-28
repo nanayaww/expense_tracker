@@ -1,7 +1,7 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ExpenseItem from "./ExpenseItem";
 
-function Expense({ expense, setExpense }) {
+function Expense({ expense, setExpense, editExpenseItem }) {
   function deleteExpenseItem(id) {
     console.log({ clickedId: id, storedIds: expense.map((item) => item.id) });
 
@@ -14,6 +14,7 @@ function Expense({ expense, setExpense }) {
         key={item.id}
         expenseList={item}
         handleClick={deleteExpenseItem}
+        handleEdit={editExpenseItem}
       />
     );
   }

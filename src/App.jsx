@@ -5,11 +5,29 @@ import Sidebar from "./assets/components/sidebar/Sidebar";
 
 function App() {
   const [expense, setExpense] = useState([]);
+  const [selectedExpense, setSelectedExpense] = useState(null);
   const [showAddExpense, setshowAddExpense] = useState(false);
   const [categories, setCategories] = useState(["Travel"]);
 
   function handleShowExpense() {
-    showAddExpense ? setshowAddExpense(false) : setshowAddExpense(true);
+    if (!showAddExpense) {
+      setSelectedExpense(null);
+    }
+    setshowAddExpense((isVisible) => !isVisible);
+  }
+
+  function editExpenseItem(id) {
+    const selectedItem = expense.find((item) => item.id === id);
+
+    if (selectedItem) {
+      setSelectedExpense(selectedItem);
+      setshowAddExpense(true);
+    }
+  }
+
+  function handleCloseExpense() {
+    setshowAddExpense(false);
+    setSelectedExpense(null);
   }
 
   return (
@@ -18,11 +36,21 @@ function App() {
         expense={expense}
         setExpense={setExpense}
         handleShowExpense={handleShowExpense}
+        handleCloseExpense={handleCloseExpense}
         showAddExpense={showAddExpense}
+        selectedExpense={selectedExpense}
         categories={categories}
       />
       <Container>
-        <Outlet context={{ expense, setExpense, handleShowExpense, setCategories }} />
+        <Outlet
+          context={{
+            expense,
+            setExpense,
+            handleShowExpense,
+            editExpenseItem,
+            setCategories,
+          }}
+        />
       </Container>
     </div>
   );

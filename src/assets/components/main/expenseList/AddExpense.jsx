@@ -1,26 +1,67 @@
+import { useEffect, useState } from "react";
 import Button from "../../Button";
 
-function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
+function AddExpense({
+  showAddExpense,
+  handleClose,
+  setExpense,
+  categories,
+  selectedExpense,
+}) {
+  const [formValues, setFormValues] = useState({
+    amount: "",
+    currency: "USD",
+    category: "",
+    date: "",
+    merchant: "",
+    notes: "",
+  });
+
+  useEffect(() => {
+    () => {
+      setFormValues(
+        selectedExpense
+          ? {
+              amount: selectedExpense.amount,
+              currency: selectedExpense.currency,
+              category: selectedExpense.category,
+              date: selectedExpense.date,
+              merchant: selectedExpense.merchant,
+              notes: selectedExpense.notes,
+            }
+          : {
+              amount: "",
+              currency: "USD",
+              category: categories[0] || "",
+              date: "",
+              merchant: "",
+              notes: "",
+            },
+      );
+    };
+  }, [selectedExpense, categories]);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormValues((current) => ({ ...current, [name]: value }));
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-
     const newExpense = {
-      id: crypto.randomUUID(),
-      amount: formData.get("amount"),
-      currency: formData.get("currency"),
-      category: formData.get("category"),
-      date: formData.get("date"),
-      merchant: formData.get("merchant"),
-      notes: formData.get("notes"),
+      ...formValues,
+      id: selectedExpense?.id || crypto.randomUUID(),
     };
 
-    setExpense((prev) => [...prev, newExpense]);
-    console.log(newExpense);
-
-    e.target.reset();
-    handleClick();
+    setExpense((prev) =>
+      selectedExpense
+        ? prev.map((item) =>
+            item.id === selectedExpense.id ? newExpense : item,
+          )
+        : [...prev, newExpense],
+    );
+    handleClose();
   }
 
   return (
@@ -49,12 +90,20 @@ function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
                   type="number"
                   name="amount"
                   id="amount"
+                  value={formValues.amount}
+                  onChange={handleChange}
                 />
               </label>
 
               <label htmlFor="currency" className="flex flex-col gap-1">
                 Currency
-                <select className="formInput" name="currency" id="currency">
+                <select
+                  className="formInput"
+                  name="currency"
+                  id="currency"
+                  value={formValues.currency}
+                  onChange={handleChange}
+                >
                   <option value="USD">USD</option>
                 </select>
               </label>
@@ -63,7 +112,13 @@ function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
             <div className="grid gap-5 sm:grid-cols-2">
               <label htmlFor="category" className="flex flex-col gap-1">
                 Category
-                <select className="formInput" name="category" id="category">
+                <select
+                  className="formInput"
+                  name="category"
+                  id="category"
+                  value={formValues.category}
+                  onChange={handleChange}
+                >
                   {categories.map((item, index) => {
                     return (
                       <option key={index} value={item}>
@@ -81,6 +136,8 @@ function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
                   type="date"
                   name="date"
                   id="date"
+                  value={formValues.date}
+                  onChange={handleChange}
                 />
               </label>
             </div>
@@ -93,19 +150,27 @@ function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
                 name="merchant"
                 id="merchant"
                 placeholder="e.g Groove"
+                value={formValues.merchant}
+                onChange={handleChange}
               />
             </label>
 
             <label htmlFor="notes" className="flex flex-col gap-1">
               Notes
-              <textarea className="formInput" name="notes" id="notes" />
+              <textarea
+                className="formInput"
+                name="notes"
+                id="notes"
+                value={formValues.notes}
+                onChange={handleChange}
+              />
             </label>
           </div>
           <div className=" grid grid-cols-2 ">
             <Button
               handleClick={(e) => {
                 e.preventDefault();
-                handleClick();
+                handleClose();
               }}
               value="cancel"
               style={
@@ -113,7 +178,7 @@ function AddExpense({ showAddExpense, handleClick, setExpense, categories }) {
               }
             />
             <Button
-              value="Add"
+              value={selectedExpense ? "Save" : "Add"}
               style={
                 "bg-white px-4 py-2 rounded-sm border justify-self-end border-gray-200 flex items-center"
               }

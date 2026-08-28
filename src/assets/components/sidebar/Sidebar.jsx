@@ -14,7 +14,9 @@ function Sidebar({
   expense,
   setExpense,
   handleShowExpense,
+  handleCloseExpense,
   showAddExpense,
+  selectedExpense,
   categories,
 }) {
   return (
@@ -27,9 +29,11 @@ function Sidebar({
         <div className="h-[10%] px-3">
           <AddExpense
             handleClick={handleShowExpense}
+            handleClose={handleCloseExpense}
             showAddExpense={showAddExpense}
             expense={expense}
             setExpense={setExpense}
+            selectedExpense={selectedExpense}
             categories={categories}
           />
           <Button
